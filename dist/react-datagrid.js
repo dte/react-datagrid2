@@ -3500,7 +3500,7 @@ module.exports = createClass({
 			inputFocused: true
 		}, function () {
 
-			var domNode = findDOMNode(this.refs.input);
+			var domNode = findDOMNode(this.input);
 			domNode.value = page;
 		}.bind(this));
 	},
@@ -3510,6 +3510,8 @@ module.exports = createClass({
 	},
 
 	renderInput: function renderInput(props) {
+		var _this = this;
+
 		var otherProps = {};
 
 		if (this.state.inputFocused) {
@@ -3519,7 +3521,9 @@ module.exports = createClass({
 		}
 
 		var inputProps = assign({
-			ref: 'input',
+			ref: function ref(el) {
+				return _this.input = el;
+			},
 			onBlur: this.handleInputBlur,
 			onFocus: this.handleInputFocus,
 			style: normalize({
@@ -7167,6 +7171,8 @@ module.exports = createClass({
     },
 
     prepareWrapper: function prepareWrapper(props, state) {
+        var _this = this;
+
         var virtualRendering = props.virtualRendering;
 
         var data = props.data;
@@ -7204,7 +7210,9 @@ module.exports = createClass({
         // }
 
         var wrapperProps = assign({
-            ref: 'wrapper',
+            ref: function ref(el) {
+                return _this.wrapper = el;
+            },
             onMount: this.onWrapperMount,
             scrollLeft: state.scrollLeft,
             scrollTop: scrollTop,
@@ -7715,7 +7723,11 @@ module.exports = createClass({
     },
 
     prepareResizeProxy: function prepareResizeProxy(props, state) {
-        return _react2.default.createElement(ResizeProxy, { ref: 'resizeProxy', active: state.resizing });
+        var _this2 = this;
+
+        return _react2.default.createElement(ResizeProxy, { ref: function ref(el) {
+                return _this2.resizeProxy = el;
+            }, active: state.resizing });
     },
 
     onColumnResizeDragStart: function onColumnResizeDragStart(config) {
@@ -7732,14 +7744,14 @@ module.exports = createClass({
     },
 
     onColumnResizeDrag: function onColumnResizeDrag(config) {
-        this.refs.resizeProxy.setState({
+        this.resizeProxy.setState({
             offset: this.resizeProxyLeft + config.resizeProxyDiff
         });
     },
 
     onColumnResizeDrop: function onColumnResizeDrop(config, resizeInfo) {
 
-        var horizScrollbar = this.refs.wrapper.refs.horizScrollbar;
+        var horizScrollbar = this.wrapper.horizScrollbar;
 
         if (horizScrollbar && this.state.scrollLeft) {
 

@@ -92,6 +92,9 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
+  },
   "author": "ZippyUI ~2016 | Steve Lacy ~2017",
   "contributors": [],
   "license": "MIT",
