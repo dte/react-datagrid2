@@ -575,7 +575,7 @@ module.exports = createClass({
         // }
 
         var wrapperProps = assign({
-            ref             : 'wrapper',
+            ref             : el => this.wrapper = el,
             onMount         : this.onWrapperMount,
             scrollLeft      : state.scrollLeft,
             scrollTop       : scrollTop,
@@ -1109,7 +1109,7 @@ module.exports = createClass({
     },
 
     prepareResizeProxy: function(props, state){
-        return <ResizeProxy ref="resizeProxy" active={state.resizing}/>
+        return <ResizeProxy ref={el => this.resizeProxy = el} active={state.resizing}/>
     },
 
     onColumnResizeDragStart: function(config){
@@ -1127,14 +1127,14 @@ module.exports = createClass({
     },
 
     onColumnResizeDrag: function(config){
-        this.refs.resizeProxy.setState({
+        this.resizeProxy.setState({
             offset: this.resizeProxyLeft + config.resizeProxyDiff
         })
     },
 
     onColumnResizeDrop: function(config, resizeInfo){
 
-        var horizScrollbar = this.refs.wrapper.refs.horizScrollbar
+        var horizScrollbar = this.wrapper.horizScrollbar
 
         if (horizScrollbar && this.state.scrollLeft){
 
