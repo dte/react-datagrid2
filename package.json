@@ -1,6 +1,6 @@
 {
   "name": "react-datagrid2",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "React DataGrid",
   "main": "lib/index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stevelacy/react-datagrid2.git"
+    "url": "https://github.com/dte/react-datagrid2.git"
   },
   "keywords": [
     "grid",
@@ -99,7 +99,7 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stevelacy/react-datagrid2/issues"
+    "url": "https://github.com/dte/react-datagrid2/issues"
   },
-  "homepage": "https://github.com/stevelacy/react-datagrid2"
+  "homepage": "https://github.com/dte/react-datagrid2"
 }
