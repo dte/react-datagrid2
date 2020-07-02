@@ -259,7 +259,7 @@ module.exports = createClass({
 			inputFocused: true
 		}, function(){
 
-			var domNode = findDOMNode(this.refs.input)
+			var domNode = findDOMNode(this.input)
 			domNode.value = page
 		}.bind(this))
 	},
@@ -279,7 +279,7 @@ module.exports = createClass({
 		}
 
 		var inputProps = assign({
-			ref: 'input',
+			ref: el => this.input = el,
 			onBlur: this.handleInputBlur,
 			onFocus: this.handleInputFocus,
 			style: normalize({
